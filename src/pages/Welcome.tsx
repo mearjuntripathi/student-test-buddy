@@ -2,6 +2,8 @@ import { useState } from "react";
 import OnboardingChat from "@/components/OnboardingChat";
 import Dashboard from "@/components/Dashboard";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import heroImage from "@/assets/hero-education.jpg";
 
 interface UserData {
@@ -12,15 +14,28 @@ interface UserData {
 }
 
 export default function Welcome() {
-  const [isCompleted, setIsCompleted] = useState(false);
+  const [step, setStep] = useState<"idle" | "login" | "otp" | "chat" | "dashboard">("idle");
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [error, setError] = useState("");
   const [userData, setUserData] = useState<UserData | null>(null);
 
   const handleOnboardingComplete = (data: UserData) => {
     setUserData(data);
-    setIsCompleted(true);
+    setStep("dashboard");
   };
 
-  if (isCompleted && userData) {
+  // Dummy OTP verification (replace with backend later)
+  const verifyOtp = () => {
+    if (otp === "1234") {
+      setError("");
+      setStep("chat"); // ✅ After OTP success → show chatbox
+    } else {
+      setError("Invalid OTP. Try 1234 (dummy).");
+    }
+  };
+
+  if (step === "dashboard" && userData) {
     return <Dashboard userData={userData} />;
   }
 
@@ -46,12 +61,71 @@ export default function Welcome() {
         </div>
       </div>
 
-      {/* Onboarding Chat Section */}
+      {/* Main Section */}
       <div className="container mx-auto px-6 py-8">
-        <Card className="max-w-4xl mx-auto shadow-large">
-          <div className="h-[600px]">
-            <OnboardingChat onComplete={handleOnboardingComplete} />
-          </div>
+        <Card className="max-w-4xl mx-auto shadow-large p-6">
+          {step === "idle" && (
+            <div className="text-center">
+              <Button
+                size="lg"
+                className="bg-gradient-primary text-white"
+                onClick={() => setStep("login")}
+              >
+                Login
+              </Button>
+            </div>
+          )}
+
+          {step === "login" && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-center">Enter Email</h2>
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <Button
+                className="w-full bg-gradient-primary text-white"
+                onClick={() => {
+                  if (!email) {
+                    setError("Please enter a valid email.");
+                    return;
+                  }
+                  setError("");
+                  setStep("otp");
+                }}
+              >
+                Send OTP
+              </Button>
+              {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            </div>
+          )}
+
+          {step === "otp" && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-center">Verify OTP</h2>
+              <Input
+                type="text"
+                placeholder="Enter OTP (use 1234)"
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+              <Button
+                className="w-full bg-gradient-primary text-white"
+                onClick={verifyOtp}
+              >
+                Verify
+              </Button>
+              {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+            </div>
+          )}
+
+          {step === "chat" && (
+            <div className="h-[600px]">
+              <OnboardingChat onComplete={handleOnboardingComplete} />
+            </div>
+          )}
         </Card>
       </div>
 
