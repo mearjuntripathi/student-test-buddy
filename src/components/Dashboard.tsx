@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Calendar, FileText, Plus, TrendingUp, Clock, Award } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { useNavigate } from "react-router-dom";
 import ScheduleTestDialog from "@/components/ScheduleTestDialog";
 
 interface DashboardProps {
@@ -14,6 +16,7 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ userData }: DashboardProps) {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -26,9 +29,12 @@ export default function Dashboard({ userData }: DashboardProps) {
               </h1>
               <p className="text-muted-foreground">Welcome back, {userData.name}!</p>
             </div>
-            <Button variant="outline" size="sm">
-              Profile Settings
-            </Button>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <Button variant="outline" size="sm" onClick={() => navigate("/profile")}>
+                Profile Settings
+              </Button>
+            </div>
           </div>
         </div>
       </header>

@@ -8,49 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 248 100% 98%;
-    --foreground: 222 84% 4.9%;
+    /* Golden/Yellow theme colors */
+    --background: 45 20% 97%;
+    --foreground: 35 25% 8%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222 84% 4.9%;
+    --card: 45 15% 95%;
+    --card-foreground: 35 25% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 84% 4.9%;
+    --popover: 45 20% 98%;
+    --popover-foreground: 35 25% 8%;
 
-    --primary: 229 83% 50%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 42 88% 55%;
+    --primary-foreground: 42 15% 12%;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 222 47.4% 11.2%;
+    --secondary: 45 15% 90%;
+    --secondary-foreground: 35 25% 15%;
 
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 45 10% 92%;
+    --muted-foreground: 35 15% 45%;
 
-    --accent: 270 95% 75%;
-    --accent-foreground: 0 0% 98%;
+    --accent: 42 75% 85%;
+    --accent-foreground: 35 25% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 229 83% 50%;
+    --border: 45 15% 85%;
+    --input: 45 15% 88%;
+    --ring: 42 88% 55%;
 
-    /* Educational theme colors */
-    --educational-primary: 229 83% 50%;
-    --educational-secondary: 270 95% 75%;
-    --educational-success: 142 76% 36%;
-    --educational-warning: 45 93% 47%;
+    /* Educational theme colors - Golden/Yellow scheme */
+    --educational-primary: 42 88% 55%;     /* Golden yellow */
+    --educational-secondary: 38 85% 50%;   /* Amber */
+    --educational-success: 45 93% 47%;     /* Yellow-green */
+    --educational-warning: 25 95% 53%;     /* Orange */
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(229 83% 50%), hsl(270 95% 75%));
-    --gradient-hero: linear-gradient(135deg, hsl(229 83% 50%) 0%, hsl(270 95% 75%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(220 14.3% 97%) 100%);
+    /* Gradients with golden theme */
+    --gradient-primary: linear-gradient(135deg, hsl(42 88% 55%), hsl(38 85% 50%));
+    --gradient-hero: linear-gradient(135deg, hsl(42 88% 45%) 0%, hsl(38 85% 40%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(45 20% 98%) 0%, hsl(45 15% 95%) 100%);
     
-    /* Shadows */
-    --shadow-soft: 0 2px 8px -1px hsl(229 83% 50% / 0.1);
-    --shadow-medium: 0 4px 16px -2px hsl(229 83% 50% / 0.15);
-    --shadow-large: 0 8px 32px -4px hsl(229 83% 50% / 0.2);
+    /* Shadows with golden tint */
+    --shadow-soft: 0 2px 8px -1px hsl(42 88% 55% / 0.1);
+    --shadow-medium: 0 4px 16px -2px hsl(42 88% 55% / 0.15);
+    --shadow-large: 0 8px 32px -4px hsl(42 88% 55% / 0.2);
 
     --radius: 0.5rem;
 
@@ -72,41 +73,42 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Golden/Yellow dark theme colors */
+    --background: 35 25% 8%;
+    --foreground: 45 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 35 20% 10%;
+    --card-foreground: 45 20% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 35 25% 9%;
+    --popover-foreground: 45 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 42 88% 60%;
+    --primary-foreground: 35 25% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 35 15% 15%;
+    --secondary-foreground: 45 20% 85%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 35 15% 12%;
+    --muted-foreground: 45 10% 55%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 42 65% 25%;
+    --accent-foreground: 45 20% 85%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 60.5%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 35 15% 18%;
+    --input: 35 15% 16%;
+    --ring: 42 88% 60%;
+    --sidebar-background: 35 25% 8%;
+    --sidebar-foreground: 45 20% 90%;
+    --sidebar-primary: 42 88% 55%;
+    --sidebar-primary-foreground: 35 25% 8%;
+    --sidebar-accent: 35 15% 15%;
+    --sidebar-accent-foreground: 45 20% 85%;
+    --sidebar-border: 35 15% 18%;
+    --sidebar-ring: 42 88% 60%;
   }
 }
 
