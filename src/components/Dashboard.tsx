@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { BookOpen, Calendar, FileText, Plus, TrendingUp, Clock, Award } from "lucide-react";
+import ScheduleTestDialog from "@/components/ScheduleTestDialog";
 
 interface DashboardProps {
   userData: {
@@ -219,10 +220,12 @@ export default function Dashboard({ userData }: DashboardProps) {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <Button variant="outline" className="h-20 flex-col gap-2 hover:shadow-soft">
-                <Calendar className="w-6 h-6" />
-                Schedule a Test
-              </Button>
+              <ScheduleTestDialog>
+                <Button variant="outline" className="h-20 flex-col gap-2 hover:shadow-soft">
+                  <Calendar className="w-6 h-6" />
+                  Schedule a Test
+                </Button>
+              </ScheduleTestDialog>
               <Button variant="outline" className="h-20 flex-col gap-2 hover:shadow-soft">
                 <Plus className="w-6 h-6" />
                 Create Self-Test
