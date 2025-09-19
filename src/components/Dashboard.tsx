@@ -220,7 +220,7 @@ export default function Dashboard({ userData }: DashboardProps) {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <ScheduleTestDialog>
+              <ScheduleTestDialog interests={userData.interests}>
                 <Button variant="outline" className="h-20 flex-col gap-2 hover:shadow-soft">
                   <Calendar className="w-6 h-6" />
                   Schedule a Test

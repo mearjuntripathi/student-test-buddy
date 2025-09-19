@@ -13,9 +13,10 @@ import { useToast } from "@/hooks/use-toast";
 
 interface ScheduleTestDialogProps {
   children: React.ReactNode;
+  interests: string[];
 }
 
-export default function ScheduleTestDialog({ children }: ScheduleTestDialogProps) {
+export default function ScheduleTestDialog({ children, interests }: ScheduleTestDialogProps) {
   const [date, setDate] = useState<Date>();
   const [student, setStudent] = useState("");
   const [testTopic, setTestTopic] = useState("");
@@ -93,7 +94,7 @@ export default function ScheduleTestDialog({ children }: ScheduleTestDialogProps
                   <SelectTrigger>
                     <SelectValue placeholder="Select a student" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="john-doe">John Doe</SelectItem>
                     <SelectItem value="jane-smith">Jane Smith</SelectItem>
                     <SelectItem value="mike-johnson">Mike Johnson</SelectItem>
@@ -106,12 +107,18 @@ export default function ScheduleTestDialog({ children }: ScheduleTestDialogProps
               {/* Test Topic */}
               <div className="space-y-2">
                 <Label htmlFor="topic">Test Topic *</Label>
-                <Input
-                  id="topic"
-                  placeholder="Enter test topic"
-                  value={testTopic}
-                  onChange={(e) => setTestTopic(e.target.value)}
-                />
+                <Select value={testTopic} onValueChange={setTestTopic}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select test topic" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-background border shadow-lg z-50">
+                    {interests.map((interest) => (
+                      <SelectItem key={interest} value={interest}>
+                        {interest}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Duration */}
@@ -121,7 +128,7 @@ export default function ScheduleTestDialog({ children }: ScheduleTestDialogProps
                   <SelectTrigger>
                     <SelectValue placeholder="Select duration" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-background border shadow-lg z-50">
                     <SelectItem value="30">30 minutes</SelectItem>
                     <SelectItem value="45">45 minutes</SelectItem>
                     <SelectItem value="60">60 minutes</SelectItem>
