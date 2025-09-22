@@ -123,7 +123,7 @@ export default function Welcome() {
 
           {step === "chat" && (
             <div className="h-[600px]">
-              <OnboardingChat onComplete={handleOnboardingComplete} />
+              <OnboardingChat email={email} onComplete={handleOnboardingComplete} />
             </div>
           )}
         </Card>

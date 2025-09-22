@@ -13,6 +13,7 @@ interface Message {
 }
 
 interface OnboardingChatProps {
+  email: string;
   onComplete: (userData: {
     name: string;
     email: string;
@@ -26,7 +27,7 @@ const INTEREST_OPTIONS = [
   "Marketing", "Sales", "Data Science", "Design", "Management"
 ];
 
-export default function OnboardingChat({ onComplete }: OnboardingChatProps) {
+export default function OnboardingChat({ email, onComplete }: OnboardingChatProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -39,7 +40,7 @@ export default function OnboardingChat({ onComplete }: OnboardingChatProps) {
   const [currentStep, setCurrentStep] = useState<"interests" | "updates" | "signup">("interests");
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [wantsUpdates, setWantsUpdates] = useState<boolean>(false);
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", email: email, password: "" });
   const [customInput, setCustomInput] = useState("");
   
   const { toast } = useToast();
@@ -224,7 +225,8 @@ export default function OnboardingChat({ onComplete }: OnboardingChatProps) {
               type="email"
               placeholder="Email Address"
               value={formData.email}
-              onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
+              disabled
+              className="bg-muted text-muted-foreground cursor-not-allowed"
               required
             />
             <Input
